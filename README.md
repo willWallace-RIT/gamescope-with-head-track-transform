@@ -89,3 +89,60 @@ Pull requests for improving Reshade compatibility support are appreciated.
 ## Status of Gamescope Packages
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/gamescope.svg?exclude_unsupported=1)](https://repology.org/project/gamescope/versions)
+
+
+📝 TODO
+
+Core System Integration
+
+[ ] Integrate shared memory head pose system for runtime input
+
+[ ] Replace mock head tracking with real tracking source (OpenXR / IMU / vision-based)
+
+
+
+---
+
+Rendering Pipeline Integration
+
+[ ] Hook head pose data into Gamescope frame loop
+
+[ ] Identify and modify render submission path in gamescope
+
+[ ] Inject yaw/pitch uniforms into final composition stage
+
+[ ] Implement GPU-side UV warp shader pass in renderer pipeline
+
+[ ] Ensure warp stage executes after composition but before scanout
+
+
+
+---
+
+Head Tracking System (External Daemon)
+
+[ ] Implement headtrackd process to publish head pose via shared memory
+
+[ ] Standardize /gamescope_headpose IPC structure
+
+[ ] Replace sine-wave mock data with real sensor fusion pipeline
+
+[ ] Optimize update loop for sub-1ms jitter (target: ~1kHz sampling)
+
+
+
+---
+
+Frame Loop & Latency Optimization
+
+[ ] Determine exact render loop entry point in steamcompmgr.cpp
+
+[ ] Ensure head pose sampling is synchronized with frame submission
+
+[ ] Add optional pose prediction to reduce perceived latency
+
+[ ] Benchmark warp overhead per frame
+
+
+
+---
